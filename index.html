@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Волшебные уроки английского с Ириной Плохих</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #f4f1f7;
+            --sidebar-bg: #e3dee9;
+            --card-bg: #ffffff;
+            --text-main: #555555;
+            --text-header: #4a4058;
+            --accent-color: #9f93b8;
+            --accent-hover: #8576a8;
+            --accent-dark: #6b5d8a;
+            --shadow-3d: 0 6px 0 var(--accent-dark), 0 8px 15px rgba(74, 64, 88, 0.2);
+            --shadow-3d-hover: 0 3px 0 var(--accent-dark), 0 5px 10px rgba(74, 64, 88, 0.15);
+            --shadow-3d-active: 0 2px 0 var(--accent-dark), inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .top-menu {
+            position: fixed;
+            top: 0;
+            left: 280px;
+            right: 0;
+            background: var(--card-bg);
+            padding: 12px 30px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            z-index: 200;
+        }
+
+        .top-menu a {
+            color: var(--text-header);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 6px 14px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .top-menu a:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .sidebar {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            padding: 30px 20px;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-right: 1px solid rgba(0,0,0,0.05);
+            z-index: 100;
+        }
+
+        .logo-container {
+            width: 150px;
+            height: 150px;
+            background-color: rgba(255,255,255,0.6);
+            border: 3px dashed var(--accent-color);
+            border-radius: 50%;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            text-align: center;
+            flex-shrink: 0;
+            margin-top: 50px;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            list-style: none;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .nav-links li {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-btn {
+            display: block;
+            width: 90%;
+            max-width: 240px;
+            padding: 14px 20px;
+            text-decoration: none;
+            color: white;
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-align: center;
+            border-radius: 12px;
+            background: linear-gradient(145deg, var(--accent-color), var(--accent-hover));
+            box-shadow: var(--shadow-3d);
+            transition: all 0.15s ease;
+            position: relative;
+            cursor: pointer;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(2px);
+            box-shadow: var(--shadow-3d-hover);
+            background: linear-gradient(145deg, var(--accent-hover), var(--accent-dark));
+        }
+
+        .nav-btn:active {
+            transform: translateY(4px);
+            box-shadow: var(--shadow-3d-active);
+        }
+
+        .nav-btn.worksheets {
+            background: linear-gradient(145deg, #b8a3d9, #a38cc4);
+        }
+
+        .main-content {
+            margin-left: 280px;
+            padding: 40px;
+            width: calc(100% - 280px);
+            margin-top: 50px;
+            flex: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 50px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .title-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .main-title {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 2.8rem;
+            color: var(--text-header);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            line-height: 1.1;
+            margin: 0;
+        }
+
+        .subtitle {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.3rem;
+            color: var(--accent-dark);
+            font-style: italic;
+            margin-top: 8px;
+            margin-left: 4px;
+        }
+
+        .photo-placeholder {
+            width: 280px !important;
+            height: 280px !important;
+            min-width: 280px !important;
+            background: linear-gradient(135deg, #fff 0%, #f8f5fc 100%);
+            border: none;
+            border-radius: 50%;
+            padding: 0;
+            box-shadow: 0 6px 0 var(--accent-dark), 0 12px 25px rgba(74, 64, 88, 0.2);
+            flex-shrink: 0;
+            overflow: hidden;
+            margin: 0 0 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+
+        .welcome-text {
+            text-align: center;
+            padding: 60px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .welcome-text h2 {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 2.2rem;
+            color: var(--text-header);
+            margin-bottom: 20px;
+        }
+
+        .welcome-text p {
+            font-size: 1.2rem;
+            color: var(--text-main);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .bottom-info {
+            margin-left: 280px;
+            padding: 40px;
+            background: var(--sidebar-bg);
+            border-top: 1px solid rgba(0,0,0,0.05);
+            width: calc(100% - 280px);
+        }
+
+        .bottom-info .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 0 var(--accent-dark), 0 8px 15px rgba(74, 64, 88, 0.2);
+            text-align: center;
+        }
+
+        .info-card h3 {
+            font-family: 'Cinzel Decorative', cursive;
+            color: var(--text-header);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .info-card p, .info-card li {
+            color: var(--text-main);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .info-card a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .info-card a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        .contacts-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-header);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: var(--sidebar-bg);
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .site-footer {
+            background: var(--accent-dark);
+            padding: 20px;
+            text-align: center;
+            margin-left: 280px;
+            color: white;
+            font-size: 0.9rem;
+            width: calc(100% - 280px);
+        }
+
+        .site-footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .site-footer a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; padding: 20px; }
+            .top-menu { left: 0; }
+            .main-content { margin-left: 0; padding: 20px; margin-top: 100px; width: 100%; }
+            .bottom-info { margin-left: 0; padding: 20px; width: 100%; }
+            .site-footer { margin-left: 0; width: 100%; }
+            .main-title { font-size: 2rem; }
+            .subtitle { font-size: 1.1rem; }
+            .header-section { 
+                flex-direction: column; 
+                text-align: center; 
+                padding-left: 0;
+                justify-content: center;
+                gap: 25px;
+            }
+            .title-block { align-items: center; }
+            .photo-placeholder { 
+                width: 150px !important; 
+                height: 150px !important; 
+                min-width: 150px !important;
+                margin: 20px auto 0 !important;
+            }
+            .info-grid { grid-template-columns: 1fr; }
+            .welcome-text { padding: 40px 15px; }
+            .welcome-text h2 { font-size: 1.8rem; }
+            .welcome-text p { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-menu">
+        <a href="#contacts">Контакты</a>
+        <a href="#payment">Оплата</a>
+    </div>
+
+    <nav class="sidebar">
+        <div class="logo-container">
+            <img src="logo.png" alt="Логотип">
+        </div>
+        <ul class="nav-links">
+            <li><a href="spotlight-2.html" class="nav-btn"> УМК Spotlight 2</a></li>
+            <li><a href="spotlight-3.html" class="nav-btn">УМК Spotlight 3</a></li>
+            <li><a href="spotlight-4.html" class="nav-btn">УМК Spotlight 4</a></li>
+            <li><a href="worksheets.html" class="nav-btn worksheets">Рабочие листы</a></li>
+            <li><a href="Quests.html" class="nav-btn quests">Квесты</a></li>
+            <li><a href="Games.html" class="nav-btn games">Игры</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <div class="container">
+            
+            <div class="header-section">
+                <div class="title-block">
+                    <h1 class="main-title">Волшебные уроки английского</h1>
+                    <div class="subtitle">с Ириной Плохих</div>
+                </div>
+                <div class="photo-placeholder">
+                    <img src="foto2.png" alt="Ирина Плохих">
+                </div>
+            </div>
+
+            <!-- Приветственный текст (без кнопок) -->
+            <div class="welcome-text">
+                <h2>Добро пожаловать!</h2>
+                <p>
+                    Рада приветствовать вас на сайте с учебными материалами по английскому языку.
+                    Здесь вы найдёте интерактивные презентации для проведения увлекательных уроков, а также рабочие листы и дополнительные материалы, которые помогут сделать обучение эффективным и интересным. Все материалы разработаны для удобного использования на занятиях и помогают легко вовлечь учеников в процесс изучения английского языка.
+                </p>
+                <p>
+                    <strong>Выберите нужный класс в меню слева</strong>, чтобы просмотреть 
+                    доступные материалы и сделать заказ.
+                </p>
+                <p style="margin-top: 30px; font-style: italic; color: var(--accent-dark);">
+                    ✨ Обучение может быть волшебным!
+                </p>
+            </div>
+            
+        </div>
+    </div>
+
+    <section class="bottom-info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card" id="contacts">
+                    <h3>Контакты</h3>
+                    <ul class="contacts-list">
+                        <li>📧 <a href="mailto:i.plohih@yandex.ru">i.plohih@yandex.ru</a></li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="https://vk.com/magiclessonsbyirinaplohih" target="_blank" rel="noopener">ВКонтакте </a>
+                        <a href="https://t.me/+79511330050" target="_blank" rel="noopener">Telegram</a>
+                    </div>
+                </div>
+                <div class="info-card" id="payment">
+                    <h3>Оплата</h3>
+                    <p>
+                        Оплата осуществляется через безопасные платёжные системы.<br><br>
+                        После подтверждения заказа вы получите ссылку на скачивание материалов на указанный email.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Волшебные уроки английского с Ириной Плохих. Все права защищены.</p>
+        <p><a href="offer.html" target="_blank" rel="noopener noreferrer">Оферта</a></p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
